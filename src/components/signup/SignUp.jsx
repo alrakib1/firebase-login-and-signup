@@ -1,8 +1,9 @@
 import {
   createUserWithEmailAndPassword,
   sendEmailVerification,
+  updateProfile,
 } from "firebase/auth";
-import React, { useState } from "react";
+import  { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import auth from "../../firebase.config";
 const SignUp = () => {
@@ -40,6 +41,15 @@ const SignUp = () => {
       .then((result) => {
         const user = result.user;
         setSuccess("User Created Successfully");
+
+        // update profile
+        updateProfile(user, {
+          displayName: name,
+          photoURL: "",
+        })
+          .then()
+          .catch();
+
         // send verification email
         sendEmailVerification(user).then(() => {
           alert("please check your email and verify your account");
@@ -85,7 +95,7 @@ const SignUp = () => {
               required
             />
             <span
-              className="absolute left-[210px] top-[135px] md:left-[380px] lg:left-[340px] cursor-pointer"
+              className="absolute left-[210px] top-[190px] md:left-[380px] lg:left-[340px] cursor-pointer"
               onClick={() => SetShowPassword(!showPassword)}
             >
               {showPassword ? <FaEyeSlash /> : <FaEye />}
