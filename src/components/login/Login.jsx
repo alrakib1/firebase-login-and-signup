@@ -7,6 +7,7 @@ import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import auth from "../../firebase.config";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { Helmet } from "react-helmet";
 
 const Login = () => {
   const [signUpError, setSignUpError] = useState("");
@@ -67,6 +68,9 @@ const Login = () => {
       });
   };
   return (
+    <Helmet>
+      <title>Login</title>
+    </Helmet>
     <div className="hero min-h-screen bg-base-200">
       <div className="hero-content flex-col lg:flex-row-reverse">
         <div className="text-center lg:text-left">

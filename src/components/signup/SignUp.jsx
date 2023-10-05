@@ -6,6 +6,7 @@ import {
 import  { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import auth from "../../firebase.config";
+import { Helmet } from "react-helmet";
 const SignUp = () => {
   const [signUpError, setSignUpError] = useState("");
   const [success, setSuccess] = useState("");
@@ -64,6 +65,9 @@ const SignUp = () => {
   };
   return (
     <>
+    <Helmet>
+      <title>Sign-Up</title>
+    </Helmet>
       <div className="mx-auto lg:w-1/4 w-3/4 relative container flex flex-col justify-center items-center mt-10 text-center ">
         <h3 className="text-4xl mb-4 mt-3 text-center">Please sign up</h3>
         <form onSubmit={handleSignUp}>
